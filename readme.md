@@ -4,13 +4,30 @@
 
 # A better way to upgrade your vehicles.
 
-## [Preview](https://youtu.be/CvuTuQYrO_s)
+## [Preview](https://youtu.be/CvuTuQYrO_s) (Need new On future)
+
+## Edited by Amrizama - Work In Progress
+
+## Functionalities 
+
+* Use Target 
+* Built-In Billing 
+* Built-in Crafting
+* Compatible Ox_target
+* Config file easy
+
+## Work in progress 
+
+* Translated file
+* Any suggestion ? Join my [Discord](discord.gg/JpYH6yWV8U)
 
 ## Dependencies
 * [Latest Version of QBCore](https://github.com/qbcore-framework)
 * [PolyZone](https://github.com/mkafrin/PolyZone)
 * [qb-target](https://github.com/BerkieBb/qb-target)
+* [Ox_target](https://github.com/overextended/ox_target) (Optional)
 * [qb-menu](https://github.com/qbcore-framework/qb-menu)
+* [OkokBilling](https://okok.tebex.io/) (Optional)
 
 ## Installation
 * Download the ZIP file and extract it in your resources folder.
