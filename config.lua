@@ -6,10 +6,32 @@ Config.JobInstall = true -- [[ Whether or not players have to have the tuner job
 
 Config.UseQbLock = false -- [[ https://github.com/Nathan-FiveM/qb-lock ]]
 
+Config.debugpoly = false -- True for poly debug / false for no poly debug
+
+Config.okokbilling = false -- True to use the OkokBilling for billing or false to use the Qbcore Built-in
+
+Config.societyname = 'Benny\'s Motorworks' -- For the billing when using okokbilling
+
+Config.craft = false -- True to use the built-in crafting
+
 Config.WaitTimes = { -- [[ Wait times for progress bars ]]
     ['crafting'] = 20000,
     ['installing'] = 25000
 }
+
+Config.duty = false -- Depends on yout qbcore/shared/jobs.lua if defaultDuty = true set false / If defaultDuty = false set true here
+
+Config.target = 'ox_target' -- Only Qb-target or Ox_target
+
+Config.tunercraft = vector3(-228.4832, -1330.258, 35.615032) -- Coords for crafting
+
+Config.duty = vector3(-198.126, -1317.214, 31.17237) -- Coords for Duty
+
+Config.tunerbill = vector3(-213.2081, -1323.017, 31.300483) -- Coords for Billing
+
+Config.tunerstorage = vector3(-194.4515, -1316.531, 35.073207) -- Coords for Stash / Storage built-in
+
+Config.tunerorder = vector3(-190.9517, -1326.245, 35.005893) -- Coords to buy some tools
 
 Config.ShopItems = {
     label = "Tuner Shop",
