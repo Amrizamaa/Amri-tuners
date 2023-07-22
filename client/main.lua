@@ -4,102 +4,220 @@ local isAuth = false
 
 -- Functions
 local function init()
-    exports['qb-target']:AddBoxZone("TunerOrder", vector3(128.61, -3014.46, 7.04), 1.2, 2.8, {
-        name="tunershop",
-        heading=0,
-        --debugPoly=true,
-        minZ=5.24,
-        maxZ=9.24
-    }, {
-        options = {{
-            event = "tuners:client:order",
-            icon = "far fa-clipboard",
-            label = "Tuner Shop",
-            job = Config.TunerJob
-        }},
-        distance = 1.5
-    })
-    exports['qb-target']:AddBoxZone("TunerStorage", vector3(128.58, -3008.24, 7.04), 1.3, 2.8, {
-        name="tunerstorage",
-        heading=0,
-        --debugPoly=true,
-        minZ=5.04,
-        maxZ=9.04
-    }, {
-        options = {{
-            event = "tuners:client:openstorage",
-            icon = "fas fa-boxes",
-            label = "Open Storage",
-            job = Config.TunerJob
-        }},
-        distance = 2
-    })
-    exports['qb-target']:AddBoxZone("TunerCraft", vector3(138.96, -3051.4, 7.04), 0.8, 2.2, {
-        name="tunercraft",
-        heading=0,
-        --debugPoly=true,
-        minZ=3.44,
-        maxZ=7.44
-    }, {
-        options = {{
-            event = "tuners:client:opencrafting",
-            icon = "fas fa-wrench",
-            label = "Open Crafting",
-            job = Config.TunerJob
-        }},
-        distance = 2
-    })
-    exports['qb-target']:AddBoxZone("TunerBill", vector3(133.16, -3015.12, 7.04), 0.5, 0.35, {
-        name="tunerbill",
-        heading=346,
-        --debugPoly=true,
-        minZ=3.04,
-        maxZ=7.04
-    }, {
-        options = {{
-            event = "tuners:client:openbilling",
-            icon = "fas fa-file-invoice",
-            label = "Create Bill",
-            job = Config.TunerJob
-        }},
-        distance = 2
-    })
-    exports['qb-target']:AddBoxZone("TunerDuty", vector3(126.06, -3007.28, 7.04), 0.4, 0.35, {
-        name="tunerduty",
-        heading=325,
-        --debugPoly=true,
-        minZ=3.04,
-        maxZ=7.04
-    }, {
-        options = {{
-            type = 'server',
-            event = "QBCore:ToggleDuty",
-            icon = "fas fa-business-time",
-            label = "Toggle Duty",
-            job = Config.TunerJob
-        }},
-        distance = 2
-    })
-end
+        if Config.target == 'ox_target' then
+            exports['ox_target']:addBoxZone({
+            name = "TunerOrder",
+            coords = vector3(Config.tunerorder.x, Config.tunerorder.y, Config.tunerorder.z),
+            heading = 0,
+            debug = Config.debugpoly,
+            size = vector3(2, 2, 2),
+            minZ = 35.24,
+            maxZ = 36.24,
+            options = {
+                {
+                event = "tuners:client:order",
+                icon = "far fa-clipboard",
+                label = "Tuner Shop",
+                job = Config.TunerJob,
+                },
+            },
+            distance = 1.5,
+        })
 
-local function IsBackEngine(vehModel)
-	if Config.BackEngineVehicles[vehModel] then return true else return false end
+        exports['ox_target']:addBoxZone({
+            name = "TunerStorage",
+            coords = vector3(Config.tunerstorage.x, Config.tunerstorage.y, Config.tunerstorage.z),
+            heading = 0,
+            debug = Config.debugpoly,
+            size = vector3(2, 2, 2),
+            minZ = 35.04,
+            maxZ = 36.04,
+                options = {
+                {
+                event = "tuners:client:openstorage",
+                icon = "fas fa-boxes",
+                label = "Open Storage",
+                job = Config.TunerJob,
+                },
+            },
+        distance = 2,
+        })
+        exports['ox_target']:addBoxZone({
+            name = "TunerBill",
+            coords = vector3(Config.tunerbill.x, Config.tunerbill.y, Config.tunerbill.z),
+            heading = 346,
+            debug = Config.debugpoly,
+            size = vector3(2, 2, 2),
+            minZ = 32.04,
+            maxZ = 34.04,
+            options = {
+                {
+                event = "tuners:client:openbilling",
+                icon = "fas fa-file-invoice",
+                label = "Create Bill",
+                job = Config.TunerJob,
+                },
+            },
+        distance = 2,
+        })
+    else
+        exports['qb-target']:AddBoxZone("TunerOrder", vector3(Config.tunerorder.x, Config.tunerorder.y, Config.tunerorder.z), 1.2, 2.8, {
+            name="tunershop",
+            heading=0,
+            debugPoly = Config.debugpoly,
+            minZ=5.24,
+            maxZ=9.24
+        }, {
+            options = {{
+                event = "tuners:client:order",
+                icon = "far fa-clipboard",
+                label = "Tuner Shop",
+                job = Config.TunerJob
+            }},
+            distance = 1.5
+        })
+
+        exports['qb-target']:AddBoxZone("TunerStorage", vector3(Config.tunerstorage.x, Config.tunerstorage.y, Config.tunerstorage.z), 1.3, 2.8, {
+            name="tunerstorage",
+            heading=0,
+            debugPoly = Config.debugpoly,
+            minZ=5.04,
+            maxZ=9.04
+        }, {
+            options = {{
+                event = "tuners:client:openstorage",
+                icon = "fas fa-boxes",
+                label = "Open Storage",
+                job = Config.TunerJob
+            }},
+            distance = 2
+        })
+        exports['qb-target']:AddBoxZone("TunerBill", vector3(Config.tunerbill.x, Config.tunerbill.y, Config.tunerbill.z), 0.5, 0.35, {
+            name="tunerbill",
+            heading=346,
+            debugPoly = Config.debugpoly,
+            minZ=3.04,
+            maxZ=7.04
+        }, {
+            options = {{
+                event = "tuners:client:openbilling",
+                icon = "fas fa-file-invoice",
+                label = "Create Bill",
+                job = Config.TunerJob
+            }},
+            distance = 2
+        })
+end
+    if Config.duty == true then
+        if Config.target == 'ox_target' then
+        exports['ox_target']:addBoxZone({
+            name = "TunerDuty",
+            coords = vector3(Config.tunerduty.x, Config.tunerduty.y, Config.tunerduty.z),
+            heading = 325,
+            debug = Config.debugpoly,
+            size = vector3(2, 2, 2),
+            minZ = 31.04,
+            maxZ = 32.04,
+            options = {
+                {
+                type = 'server',
+                event = "QBCore:ToggleDuty",
+                icon = "fas fa-business-time",
+                label = "Toggle Duty",
+                job = Config.TunerJob,
+                },
+            },
+        distance = 2,
+        })
+    else 
+        exports['qb-target']:AddBoxZone("TunerDuty", vector3(Config.tunerduty.x, Config.tunerduty.y, Config.tunerduty.z), 0.4, 0.35, {
+            name="tunerduty",
+            heading=325,
+            debugPoly = Config.debugpoly,
+            minZ=3.04,
+            maxZ=7.04
+            }, {
+            options = {
+                {
+                type = 'server',
+                event = "QBCore:ToggleDuty",
+                icon = "fas fa-business-time",
+                label = "Toggle Duty",
+                job = Config.TunerJob
+                }
+            },
+        distance = 2
+        })
+    end
+end
+    if Config.craft == true then
+        if Config.target == 'ox_target' then
+        exports['ox_target']:addBoxZone({
+            name = "TunerCraft",
+            coords = vector3(Config.tunercraft.x, Config.tunercraft.y, Config.tunercraft.z),
+            heading = 0,
+            debug = Config.debugpoly,
+            size = vector3(2, 2, 2),
+            minZ = 36.44,
+            maxZ = 37.44,
+            options = {
+                {
+                event = "tuners:client:opencrafting",
+                icon = "fas fa-wrench",
+                label = "Open Crafting",
+                job = Config.TunerJob,
+                },
+            },
+        distance = 2,
+        })
+    else 
+        exports['qb-target']:AddBoxZone("TunerCraft", vector3(Config.tunercraft.x, Config.tunercraft.y, Config.tunercraft.z), 0.8, 2.2, {
+            name="tunercraft",
+            heading=0,
+            debugPoly = Config.debugpoly,
+            minZ=3.44,
+            maxZ=7.44
+        }, {
+            options = {
+                {
+                event = "tuners:client:opencrafting",
+                icon = "fas fa-wrench",
+                label = "Open Crafting",
+                job = Config.TunerJob
+                }
+            },
+        distance = 2
+        })
+        end
+    end
 end
 
 -- Events
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     if QBCore.Functions.GetPlayerData().job.name == Config.TunerJob then
         isAuth = true
+        init()
     end
-    init()
+end)
+
+AddEventHandler('onResourceStart', function(resource)
+    if resource == GetCurrentResourceName() then
+        init()
+    end
 end)
 
 RegisterNetEvent('QBCore:Client:OnJobUpdate', function(job)
     isAuth = false
     if job.name == Config.TunerJob then
         isAuth = true
+    init()
     end
 end)
+
+local function IsBackEngine(vehModel)
+	if Config.BackEngineVehicles[vehModel] then return true else return false end
+end
+
 
 RegisterNetEvent('tuners:client:order', function()
     TriggerServerEvent("inventory:server:OpenInventory", "shop", "Tuner Shop", Config.ShopItems)
@@ -289,31 +407,42 @@ end)
 RegisterNetEvent('tuners:client:openbilling', function()
     local player, distance = QBCore.Functions.GetClosestPlayer()
     if player ~= -1 and distance < 2.5 then
-        local playerId = GetPlayerServerId(player)
-        local dialog = exports['qb-input']:ShowInput({
-            header = "Create Receipt",
-            submitText = "Bill",
-            inputs = {{
-                text = "Player ID",
-                name = "plyid",
-                type = "number",
-                isRequired = true
-            }, {
-                text = "Amount",
-                name = "amount",
-                type = "number",
-                isRequired = true
-            }}
-        })
-        if tonumber(dialog['plyid']) > 0 and tonumber(dialog['amount']) > 0 then
-            TriggerServerEvent("tuners:server:billplayer", dialog['plyid'], dialog['amount'])
+        if Config.okokbilling == true then
+            TriggerEvent("okokBilling:ToggleCreateInvoice")
         else
-            QBCore.Functions.Notify('Amount must be greater than 0', 'error')
+            local playerId = GetPlayerServerId(player)
+            local dialog = exports['qb-input']:ShowInput({
+                header = "Create Receipt",
+                submitText = "Bill",
+                inputs = {{
+                    text = "Player ID",
+                    name = "plyid",
+                    type = "number",
+                    isRequired = true
+                }, {
+                    text = "Amount",
+                    name = "amount",
+                    type = "number",
+                    isRequired = true
+                }, {
+                    text = "Reason",
+                    name = "reason",
+                    type = "text",
+                    isRequired = true
+                }}
+            })
+            if tonumber(dialog['plyid']) > 0 and tonumber(dialog['amount']) > 0 then
+                TriggerServerEvent("tuners:server:billplayer", dialog['plyid'], dialog['amount'])
+            else
+                QBCore.Functions.Notify('Amount must be greater than 0', 'error')
+            end
         end
     else
         QBCore.Functions.Notify('No one nearby!', 'error')
     end
 end)
+
+
 
 RegisterNetEvent('tuners:client:useitem', function(type, item, tier)
     if Config.JobInstall and not isAuth then return end
