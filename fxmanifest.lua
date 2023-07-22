@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
-version '1.0'
-author 'darkets'
+version '1.1'
+author 'Amrizama & darkets'
 
 shared_script 'config.lua'
 
