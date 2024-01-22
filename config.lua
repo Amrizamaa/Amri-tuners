@@ -1,6 +1,6 @@
 Config = {}
 
-Config.TunerJob = 'mechanic'
+Config.TunerJob = 'tuner'
 
 Config.JobInstall = true -- [[ Whether or not players have to have the tuner job in order to install vehicle parts ]]
 
